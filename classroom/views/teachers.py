@@ -97,3 +97,49 @@ class QuizDeleteView(DeleteView):
     def get_queryset(self):
         return self.request.user.quizzes.all()
 
+
+@method_decorator([login_required, teacher_required], name='dispatch')
+class QuizResultsView(DetailView):
+    model = Quiz
+    context_object_name = 'quiz'
+    template_name = 'teachers/quiz_results.html'
+
+    def get_context_data(self, **kwargs):
+        quiz = self.get_object()
+        taken_quizzes = quiz.taken_quizzes.select_related('student__user').order_by('-date')
+        total_taken_quizzes = taken_quizzes.count()
+        quiz_score = quiz.taken_quizzes.aggregate(average_score=Avg('score'))
+        extra_context = {
+            'taken_quizzes': taken_quizzes,
+            'total_taken_quizzes': total_taken_quizzes,
+            'quiz_score': quiz_score
+        }
+        kwargs.update(extra_context)
+        return super().get_context_data(**kwargs)
+
+    def get_queryset(self):
+        return self.request.user.quizzes.all()
+
+
+@login_required
+@teacher_required
+def question_add(request, pk):
+    # By filtering the quiz by the url keyword argument `pk` and
+    # by the owner, which is the logged in user, we are protecting
+    # this view at the object-level. Meaning only the owner of
+    # quiz will be able to add questions to it.
+    quiz = get_object_or_404(Quiz, pk=pk, owner=request.user)
+
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.quiz = quiz
+            question.save()
+            messages.success(request, 'You may now add answers/options to the question.')
+            return redirect('teachers:question_change', quiz.pk, question.pk)
+    else:
+        form = QuestionForm()
+
+    return render(request, 'teachers/question_add_form.html', {'quiz': quiz, 'form': form})
+
