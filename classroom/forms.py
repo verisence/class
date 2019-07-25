@@ -43,3 +43,8 @@ class StudentInterestsForm(forms.ModelForm):
         widgets = {
             'interests': forms.CheckboxSelectMultiple
         }
+
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ('text', )
