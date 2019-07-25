@@ -35,3 +35,11 @@ class StudentSignUpForm(UserCreationForm):
         student = Student.objects.create(user=user)
         student.interests.add(*self.cleaned_data.get('interests'))
         return user
+
+class StudentInterestsForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ('interests', )
+        widgets = {
+            'interests': forms.CheckboxSelectMultiple
+        }
