@@ -30,3 +30,4 @@ class TeacherSignUpView(CreateView):
         return redirect('teachers:quiz_change_list')
 
 
+@method_decorator([login_required, teacher_required], name='dispatch')
