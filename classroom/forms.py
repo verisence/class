@@ -77,3 +77,8 @@ class TakeQuizForm(forms.ModelForm):
         question = kwargs.pop('question')
         super().__init__(*args, **kwargs)
         self.fields['answer'].queryset = question.answers.order_by('text')
+
+class StudeForm(forms.ModelForm):
+    class Meta:
+        model = Stude
+        exclude = ['user']
