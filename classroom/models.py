@@ -20,9 +20,4 @@ class Subject(models.Model):
         return mark_safe(html)
 
 class Quiz(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
-    name = models.CharField(max_length=255)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='quizzes')
-
-    def __str__(self):
-        return self.name
+   
