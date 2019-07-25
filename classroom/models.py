@@ -135,3 +135,4 @@ class Stude(models.Model):
     Whcih_avenue_was_most_influential_in_joining_Moringa_School =models.CharField(max_length =100,choices=INFLUENCE_CHOICES, null=True)
     Do_you_understand_that_you_need_to_pay_the_full_amount = models.CharField(max_length =100,choices=PAY_CHOICES, null=True)
     What_is_your_highest_level_of_education_completed =models.CharField(max_length =100,choices=EDUCATION_CHOICES, null=True)
+    article_link = models.CharField(max_length =100)
