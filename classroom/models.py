@@ -127,3 +127,6 @@ class Stude(models.Model):
     last_name = models.CharField(max_length =40)
     email = models.CharField(max_length =100)
     class_name = models.CharField(max_length =100,choices=CLASS_CHOICES)
+    phone_Number =   models.IntegerField(default=0, null=True)
+    Gender = models.CharField(max_length =100,choices=GENDER_CHOICES, null=True)
+    Have_you_participated_in_a_Moringa_School_training_before = models.CharField(max_length =100,choices=PARTICIPATE_CHOICES, null=True)
