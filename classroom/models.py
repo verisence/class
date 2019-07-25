@@ -139,4 +139,8 @@ class Stude(models.Model):
 
     def __str__(self):
         name = self.first_name     
+<<<<<<< HEAD
         return name
+=======
+        return name
+>>>>>>> origin/feature/models
