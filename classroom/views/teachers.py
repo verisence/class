@@ -82,3 +82,18 @@ class QuizUpdateView(UpdateView):
         return reverse('teachers:quiz_change', kwargs={'pk': self.object.pk})
 
 
+@method_decorator([login_required, teacher_required], name='dispatch')
+class QuizDeleteView(DeleteView):
+    model = Quiz
+    context_object_name = 'quiz'
+    template_name = 'teachers/quiz_delete_confirm.html'
+    success_url = reverse_lazy('teachers:quiz_change_list')
+
+    def delete(self, request, *args, **kwargs):
+        quiz = self.get_object()
+        messages.success(request, 'The quiz %s was deleted with success!' % quiz.name)
+        return super().delete(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return self.request.user.quizzes.all()
+
