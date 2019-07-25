@@ -28,3 +28,4 @@ class StudentSignUpView(CreateView):
         return redirect('students:quiz_list')
 
 
+@method_decorator([login_required, student_required], name='dispatch')
