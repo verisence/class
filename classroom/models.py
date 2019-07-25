@@ -62,3 +62,7 @@ class TakenQuiz(models.Model):
     score = models.FloatField()
     date = models.DateTimeField(auto_now_add=True)
 
+class StudentAnswer(models.Model):
+    
+
+
