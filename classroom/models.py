@@ -67,3 +67,59 @@ class StudentAnswer(models.Model):
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')
 
 
+class Stude(models.Model):
+    CLASS_CHOICES = [
+        ('2019MPFT-Aug5-Sep6','2019MPFT-Aug5-Sep6'),
+    ]
+    PARTICIPATE_CHOICES = [
+        ('Yes','Yes'),
+        ('No','NO'),
+        ('Maybe','Maybe')
+    ]
+    CORE_CHOICES = [
+        ('Yes','Yes'),
+        ('No','NO'),
+        ('Maybe','Maybe')
+    ]
+    INFLUENCE_CHOICES = [
+        ('Facebook','Facebook'),
+        ('Twitter','Twitter'),
+        ('Alumni','Alumni'),
+        ('Event','Event'),
+        ('Instagram','Instagram'),
+        ('Moringa-Website','Moringa-Website'),
+        ('Referall','Referall'),
+        ('Google','Google'),
+        ('Nairobi-Tech-Week','Nairobi-Tech-Week'),
+        ('Other','Other')
+    ]
+    HEAR_CHOICES = [
+        ('Facebook','Facebook'),
+        ('Twitter','Twitter'),
+        ('Alumni','Alumni'),
+        ('Event','Event'),
+        ('Instagram','Instagram'),
+        ('Moringa-Website','Moringa-Website'),
+        ('Referall','Referall'),
+        ('Google','Google'),
+        ('Nairobi-Tech-Week','Nairobi-Tech-Week'),
+        ('Other','Other')
+    ]
+    EDUCATION_CHOICES = [
+        ('High-School','High-School'),
+        ('Diploma','Diploma'),
+        ('Bachelor-Degree','Bachelor-Degree'),
+        ('Masters','Masters'),
+        ('Doctorate','Doctorate'),
+        ('Other','Other')
+
+    ]
+    GENDER_CHOICES = [
+        ('Male','Male'),
+        ('Female','Female'),
+        ('Prefer not to say','Prefer not to say')
+    ]
+    PAY_CHOICES = [
+        ('Yes','Yes'),
+        ('No','No')
+    ]
