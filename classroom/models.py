@@ -130,3 +130,8 @@ class Stude(models.Model):
     phone_Number =   models.IntegerField(default=0, null=True)
     Gender = models.CharField(max_length =100,choices=GENDER_CHOICES, null=True)
     Have_you_participated_in_a_Moringa_School_training_before = models.CharField(max_length =100,choices=PARTICIPATE_CHOICES, null=True)
+    Are_you_interested_in_joining_Moringa_Core_after_Moringa_Prep =models.CharField(max_length =100,choices=CORE_CHOICES, null=True)
+    Where_did_you_hear_about_Moringa_School = models.CharField(max_length =100,choices=HEAR_CHOICES, null=True)
+    Whcih_avenue_was_most_influential_in_joining_Moringa_School =models.CharField(max_length =100,choices=INFLUENCE_CHOICES, null=True)
+    Do_you_understand_that_you_need_to_pay_the_full_amount = models.CharField(max_length =100,choices=PAY_CHOICES, null=True)
+    What_is_your_highest_level_of_education_completed =models.CharField(max_length =100,choices=EDUCATION_CHOICES, null=True)
