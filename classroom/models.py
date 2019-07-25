@@ -123,3 +123,7 @@ class Stude(models.Model):
         ('Yes','Yes'),
         ('No','No')
     ]
+    first_name = models.CharField(max_length =40)
+    last_name = models.CharField(max_length =40)
+    email = models.CharField(max_length =100)
+    class_name = models.CharField(max_length =100,choices=CLASS_CHOICES)
