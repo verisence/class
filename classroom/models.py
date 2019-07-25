@@ -53,3 +53,6 @@ class Student(models.Model):
             .values_list('answer__question__pk', flat=True)
         questions = quiz.questions.exclude(pk__in=answered_questions).order_by('text')
         return questions
+    def __str__(self):
+        return self.user.username
+
