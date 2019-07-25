@@ -31,3 +31,16 @@ class TeacherSignUpView(CreateView):
 
 
 @method_decorator([login_required, teacher_required], name='dispatch')
+class QuizListView(ListView):
+    model = Quiz
+    ordering = ('name', )
+    context_object_name = 'quizzes'
+    template_name = 'teachers/quiz_change_list.html'
+
+    def get_queryset(self):
+        queryset = self.request.user.quizzes \
+            .select_related('subject') \
+            .annotate(questions_count=Count('questions', distinct=True)) \
+            .annotate(taken_count=Count('taken_quizzes', distinct=True))
+        return queryset
+
