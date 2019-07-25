@@ -138,10 +138,5 @@ class Stude(models.Model):
     article_link = models.CharField(max_length =100)
 
     def __str__(self):
-<<<<<<< HEAD
         name = self.first_name
         return name
-=======
-        name = self.first_name     
-        return name
->>>>>>> origin/feature/models
